@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Habitat scenarios</title>
+  <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="/bower_components/underscore/underscore.js"></script>
+  <script type="text/javascript" src="/bower_components/backbone/backbone.js"></script>
+  <script type="text/javascript" src="/bower_components/codemirror/lib/codemirror.js"></script>
+  <script type="text/javascript"  src="/bower_components/codemirror/mode/gherkin/gherkin.js"></script>
+  <script type="text/javascript"  src="/bower_components/foundation/js/foundation.min.js"></script>
+  <script type="text/javascript"  src="/bower_components/foundation/js/foundation/foundation.topbar.js"></script>
+  <script type="text/javascript"  src="/app.js"></script>
+  <link rel='stylesheet' href='/bower_components/roboto-slab-fontface/roboto-slab-fontface.css' type='text/css'>
+  <link rel="stylesheet" href="/bower_components/foundation/css/foundation.min.css">
+  <link rel="stylesheet" href="/bower_components/codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">Scenarios</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"></a></li>
+    </ul>
+    <section class="top-bar-section">
+      <ul class="right">
+        <li class="has-form">
+          <a href="#/settings">Settings</a>
+        </li>
+        <li class="has-form">
+          <a href="#/scenario/new" class="button">New</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <div>
+      <div id="main" class="row">
+
+      </div>
+      <div id="secondary" class="row">
+
+      </div>
+  </div>
+
+  <!-- Templates -->
+  <script type="text/template" id="tpl-authorize">
+    <div id="main" class="small-10 small-centered columns">
+      <div class="panel">
+        <h2>Scenarios</h2>
+        <p>
+          This app lets you write scenarios for your habitat server. You need to authorize it first.
+        </p>
+        <form class="authorize">
+          <label> Habitat server URL
+            <input type="url" value="http://localhost:5000">
+          </label>
+          <button class="alert expand" style="button">Authorize</button>
+        </form>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/template" id="tpl-settings">
+    <div id="main" class="small-10 small-centered columns">
+      <div class="panel">
+        <h2>Settings</h2>
+        <p class="reset">
+          <button class="alert expand" style="button">Reset</button>
+        </p>
+
+      </div>
+    </div>
+  </script>
+
+
+  <script type="text/template" id="tpl-scenario-read">
+    <li>
+      <a href="#/scenario/<%= id %>">
+        <code>
+<%= code %>
+        </code>
+      </a>
+    </li>
+  </script>
+
+  <script type="text/template" id="tpl-scenario-edit">
+    <div id="editor">
+      <textarea>
+<%= code %>
+      </textarea>
+      <button type="button" class="expand save">Save</button>
+      <button type="button" class="expand delete">Delete</button>
+    </div>
+
+  </script>
+
+  <script type="text/template" id="tpl-plugins">
+    <div class="panel">
+      <% _.each(plugins, function(plugin) { %>
+        <h3><%= plugin.name %></h3>
+        <dl>
+          <% _.each(plugin.steps, function(step) { %>
+            <dt><code><%= step.code %></code></dt>
+            <dd><%= step.about %></dd>
+          <% }); %>
+        </dl>
+      <% }); %>
+    </div>
+
+  </script>
+
+  <script type="text/javascript" charset="utf-8">
+    $(document).foundation();
+  </script>
+
+</body>
+</html>

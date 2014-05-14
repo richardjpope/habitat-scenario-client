@@ -1,0 +1,51 @@
+body {
+  padding-top: 0px;
+}
+
+.button, button, .top-bar-section ul>li a, h1, h2, h3, h4, h5 {
+    font-family: 'Roboto Slab', serif;
+    font-style:italic;
+}
+
+label{
+    font-size:1rem;
+}
+
+.panel {
+  border:none;
+}
+
+ul.item-list{
+  margin:0;
+}
+
+ul.item-list li {
+  border-bottom:solid 1px #ccc;
+  list-style-type:none;
+  padding:0 10px;
+  margin:0;
+}
+
+#main {
+  padding-top:1rem
+}
+
+#main code, #main #editor {
+  padding:15px;
+}
+
+code{
+  white-space: pre;
+  word-break: normal;
+  word-wrap: normal;
+  font-weight:normal;
+  color:#333;
+}
+
+.list-group-item:hover code {
+  background-color:#F5F5F5;
+}
+
+#editor {
+  font-size:1.4rem;
+}

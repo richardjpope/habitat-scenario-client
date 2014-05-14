@@ -1,0 +1,8 @@
+- move location of server to local storage
+- handle expired tokens
+- bug when refreshing
+- settings panel
+- redirect_uri is hard coded
+
+done:
+- display plugins
