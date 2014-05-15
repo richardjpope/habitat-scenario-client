@@ -1,8 +1,10 @@
-- move location of server to local storage
 - handle expired tokens
 - bug when refreshing
-- settings panel
-- redirect_uri is hard coded
+- confirmation when saving / errors / validation
+- indicate when loading data
 
 done:
 - display plugins
+- redirect_uri is hard coded
+- settings panel
+- move location of server to local storage

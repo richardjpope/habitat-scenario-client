@@ -98,9 +98,12 @@ $(document).ready( function(){
     },
 
     delete: function(){
-      this.model.destroy();
-      this.remove();
-      window.location = '/';
+      this.model.destroy({
+        success: function() {
+          window.location = '/';
+        }
+      });
+      return false;
     }
 
   });
@@ -185,7 +188,6 @@ $(document).ready( function(){
     },
 
   });
-
 
   // Router
   var AppRouter = Backbone.Router.extend({
