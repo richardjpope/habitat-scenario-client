@@ -6,11 +6,18 @@ $(document).ready( function(){
         options.headers = {
             'Authorization': 'Bearer ' + localStorage.getItem("access_token")
         };
+
+        options.error = function(xhr, text_status, error_thrown){
+          if(xhr.status == 403){
+              localStorage.removeItem('access_token');
+          }
+        };
+
         backboneSync(method, model, options);
     };
 
   var is_authorized = function(){
-    return localStorage.getItem("access_token") === null;
+    return localStorage.getItem("access_token") !== null;
   }
 
   // Models
@@ -208,7 +215,7 @@ $(document).ready( function(){
       },
 
       list:function () {
-          if (is_authorized()) {
+          if (is_authorized() == false) {
             this.authorizeView = new AuthorizeView();
           }else{
             this.scenarioListView = new ScenarioListView({model:this.scenarioList});
